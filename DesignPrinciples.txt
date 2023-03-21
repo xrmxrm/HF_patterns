@@ -6,6 +6,8 @@ Favor composition over inheritance.
 
 Strive for loosely coupled designs between objects that interact.
 
+Classes should be open for extension but closed for modification.
+
 
 Strategy Pattern
 ----------------
@@ -13,4 +15,8 @@ Define a family of algorithms; encapsulate each; make them interchangeable. This
 
 Observer Pattern
 ---------------- 
-Defines a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically.
+Defines a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and (either updated automatically or invited to pull updates). Observers and Subject are loosely coupled.
+
+Decorator Pattern
+-----------------
+Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. A decorator is a wrapper with the same superclass as the wrapped object.
