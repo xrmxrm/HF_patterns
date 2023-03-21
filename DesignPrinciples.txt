@@ -1,0 +1,3 @@
+Identify the aspects of the application that vary and separate them from what stays the same. That is, encapsulate the parts that vary, so you can alter or extend tham without affecting the parts that don't vary.
+
+Program to an interface, not an implementation
