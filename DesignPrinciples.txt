@@ -8,6 +8,15 @@ Strive for loosely coupled designs between objects that interact.
 
 Classes should be open for extension but closed for modification.
 
+Dependency inversion principle: Depend on abstractions. Don't depend on concrete classes. High-level components should not depend on low-level components. They should both depend on abstractions. Guidelines (impossible to follow, but have a good reason for not following them):
+
+  * No variable should hold a reference to a concrete class.
+
+  * No class should derive from a concrete class.
+
+  * No method should override an implemented method of
+    any of its base classes.
+
 
 Strategy Pattern
 ----------------
@@ -21,5 +30,6 @@ Decorator Pattern
 -----------------
 Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. A decorator is a wrapper with the same superclass ()or interface as the wrapped object.
 
-Factory Pattern
----------------
+Factory Method Pattern
+----------------------
+Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
