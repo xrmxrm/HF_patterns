@@ -47,3 +47,13 @@ Singleton
 Ensure that a class has only one instance and provide a global point of access to it.
 
 Simple idea, but issues include lazy vs eager instantiation, thread safety, multiple class loaders.
+
+Command
+-------
+Encapsulate a request as an object, enabling you to parameterize other objects with different requests, queue or log requests, and support undoing operations.
+
+It decouples the requestor of an action from the object that performs the action.
+
+Null Object
+-----------
+Remove responsibility for handling nulls from clients by providing a surrogate that does nothing when executed.
