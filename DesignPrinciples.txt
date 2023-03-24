@@ -18,18 +18,32 @@ Dependency inversion principle: Depend on abstractions. Don't depend on concrete
     any of its base classes.
 
 
-Strategy Pattern
-----------------
+
+PATTERNS
+========
+
+Strategy
+--------
 Define a family of algorithms; encapsulate each; make them interchangeable. This lets the algorithm vary independently from the client using it.
 
-Observer Pattern
----------------- 
+Observer
+-------- 
 Define a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and (either updated automatically or invited to pull updates). Observers and Subject are loosely coupled.
 
-Decorator Pattern
------------------
+Decorator
+---------
 Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. A decorator is a wrapper with the same superclass ()or interface as the wrapped object.
 
-Factory Method Pattern
-----------------------
+Factory Method
+--------------
 Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+
+Abstract Factory
+----------------
+Provide an interface for creating families of related dependent objects without specifying their concrete classes.
+
+Singleton
+---------
+Ensure that a class has only one instance and provide a global point of access to it.
+
+Simple idea, but issues include lazy vs eager instantiation, thread safety, multiple class loaders.
