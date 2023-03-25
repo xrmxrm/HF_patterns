@@ -32,6 +32,8 @@ Principle of least knowledge: Talk only to your immediate friends. Fewer depende
 
   * Objects the method creates or instantiates.
 
+Hollywood principle: Don't call us, we'll call you. Low-level components can hook themselves in, but high-level components decide when/whether to call them.
+
 
 
 
@@ -81,3 +83,7 @@ Convert an object's interface into a different interface that the client expects
 Facade
 ------
 Provide a unified (higher level, easy-to-use) interface to a set of interfaces in a subsystem.
+
+Template Method
+---------------
+Define the structure of an algorithm in a class method, and let subclasses provide implementations for some steps. The abstract class can contain a hook: a concrete method that does nothing (but can be overridden or ignored by subclasses). Rule: Use an abstract method when the subclass must provide an implementation. Use a hook when implementing the method in the subclass is optional.
