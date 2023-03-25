@@ -17,6 +17,22 @@ Dependency inversion principle: Depend on abstractions. Don't depend on concrete
   * No method should override an implemented method of
     any of its base classes.
 
+Principle of least knowledge: Talk only to your immediate friends. Fewer dependencies --> robust system. More dependencies --> fragile system. Given an object, its methods should invoke only methods that belong to:
+
+  * That object.
+
+  * Objects referenced by the object's instance variables (HAS-A relationships).
+    For example: 
+      return station.getTemperature() 
+    rather than 
+      thermometer = station.getThermometer(); return thermometer.get Temperature()
+    so not dependent on Thermometer class.
+
+  * Objects passed as arguments to the method.
+
+  * Objects the method creates or instantiates.
+
+
 
 
 PATTERNS
@@ -57,3 +73,11 @@ It decouples the requestor of an action from the object that performs the action
 Null Object
 -----------
 Remove responsibility for handling nulls from clients by providing a surrogate that does nothing when executed.
+
+Adapter
+-------
+Convert an object's interface into a different interface that the client expects.
+
+Facade
+------
+Provide a unified (higher level, easy-to-use) interface to a set of interfaces in a subsystem.
