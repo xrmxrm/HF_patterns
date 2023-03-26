@@ -1,3 +1,6 @@
+PRINCIPLES
+==========
+
 Identify the aspects of the application that vary and separate them from what stays the same. That is, encapsulate the parts that vary, so you can alter or extend tham without affecting the parts that don't vary.
 
 Program to an interface, not an implementation. That is, program to a supertype.
@@ -8,7 +11,9 @@ Strive for loosely coupled designs between objects that interact.
 
 Classes should be open for extension but closed for modification.
 
-Dependency inversion principle: Depend on abstractions. Don't depend on concrete classes. High-level components should not depend on low-level components. They should both depend on abstractions. Guidelines (impossible to follow, but have a good reason for not following them):
+Dependency inversion
+--------------------
+Depend on abstractions. Don't depend on concrete classes. High-level components should not depend on low-level components. They should both depend on abstractions. Guidelines (impossible to follow, but have a good reason for not following them):
 
   * No variable should hold a reference to a concrete class.
 
@@ -17,7 +22,9 @@ Dependency inversion principle: Depend on abstractions. Don't depend on concrete
   * No method should override an implemented method of
     any of its base classes.
 
-Principle of least knowledge: Talk only to your immediate friends. Fewer dependencies --> robust system. More dependencies --> fragile system. Given an object, its methods should invoke only methods that belong to:
+Least knowledge
+---------------
+Talk only to your immediate friends. Fewer dependencies --> robust system. More dependencies --> fragile system. Given an object, its methods should invoke only methods that belong to:
 
   * That object.
 
@@ -32,9 +39,13 @@ Principle of least knowledge: Talk only to your immediate friends. Fewer depende
 
   * Objects the method creates or instantiates.
 
-Hollywood principle: Don't call us, we'll call you. Low-level components can hook themselves in, but high-level components decide when/whether to call them.
+Hollywood
+---------
+Don't call us, we'll call you. Low-level components can hook themselves in, but high-level components decide when/whether to call them.
 
-
+Single responsibility
+---------------------
+A class should have only one responsibility, so it has only one reason to change. And that class should be the only class with that responsibility, so it's the only one that has to change. Strive for high cohesion.
 
 
 PATTERNS
@@ -87,3 +98,7 @@ Provide a unified (higher level, easy-to-use) interface to a set of interfaces i
 Template Method
 ---------------
 Define the structure of an algorithm in a class method, and let subclasses provide implementations for some steps. The abstract class can contain a hook: a concrete method that does nothing (but can be overridden or ignored by subclasses). Rule: Use an abstract method when the subclass must provide an implementation. Use a hook when implementing the method in the subclass is optional.
+
+Iterator
+--------
+Provide a way to access the elements of an aggregate sequentially without exposing the aggregate's underlying representation. Place the task of traversal on the iterator, not on the aggregate.
