@@ -57,6 +57,10 @@ Strategy
 --------
 Define a family of algorithms; encapsulate each; make them interchangeable. This lets the algorithm vary independently from the client using it.
 
+State
+-----
+Object (the context) behavior depends on its state (so it appears to change its class). Each state of the context is represented by a class, which implements a behavior for each of a set of possible inputs to the context.
+
 Observer
 -------- 
 Define a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and (either updated automatically or invited to pull updates). Observers and Subject are loosely coupled.
@@ -104,3 +108,7 @@ Define the structure of an algorithm in a class method, and let subclasses provi
 Iterator
 --------
 Provide a way to access the elements of an aggregate sequentially without exposing the aggregate's underlying representation. Place the task of traversal on the iterator, not on the aggregate.
+
+Composite
+---------
+Use tree structures to represent part/whole hierarchies, so clients can treat individual objects and compositions of objects uniformly.
