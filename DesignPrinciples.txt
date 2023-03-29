@@ -1,17 +1,19 @@
 PRINCIPLES
 ==========
+These are guidelines, not rules.
 
-Identify the aspects of the application that vary and separate them from what stays the same. That is, encapsulate the parts that vary, so you can alter or extend tham without affecting the parts that don't vary.
+Basic
+-----
+ * Strive for simplicity.
 
-Program to an interface, not an implementation. That is, program to a supertype.
+ * Identify the aspects of the application that vary and separate them from what stays the same. That is, encapsulate the parts that vary, so you can alter or extend tham without affecting the parts that don't vary.
 
-Favor composition over inheritance.
+ * Program to an interface, not an implementation. That is, program to a supertype.
 
-Strive for loosely coupled designs between objects that interact.
+ * Favor composition over inheritance.
 
-Open/closed
------------
-Classes should be open for extension but closed for modification.
+ * Strive for loosely coupled designs between objects that interact.
+
 
 Dependency inversion
 --------------------
@@ -23,6 +25,10 @@ Depend on abstractions. Don't depend on concrete classes. High-level components 
 
   * No method should override an implemented method of
     any of its base classes.
+
+Hollywood
+---------
+Don't call us, we'll call you. Low-level components can hook themselves in, but high-level components decide when/whether to call them.
 
 Least knowledge
 ---------------
@@ -41,9 +47,9 @@ Talk only to your immediate friends. Fewer dependencies --> robust system. More 
 
   * Objects the method creates or instantiates.
 
-Hollywood
----------
-Don't call us, we'll call you. Low-level components can hook themselves in, but high-level components decide when/whether to call them.
+Open/closed
+-----------
+Classes should be open for extension but closed for modification.
 
 Single responsibility
 ---------------------
@@ -53,29 +59,33 @@ A class should have only one responsibility, so it has only one reason to change
 PATTERNS
 ========
 
-Strategy
---------
-Define a family of algorithms; encapsulate each; make them interchangeable. This lets the algorithm vary independently from the client using it.
+A design pattern is the solution to a problem in context:
 
-State
------
-Object (the context) behavior depends on its state (so it appears to change its class). Each state of the context is represented by a class, which implements a behavior for each of a set of possible inputs to the context.
+ * Context: the situation in which the pattern applies.
 
-Observer
--------- 
-Define a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and (either updated automatically or invited to pull updates). Observers and Subject are loosely coupled.
+ * Problem: The goal, and the constraints of the context.
 
-Decorator
----------
-Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. A decorator is a wrapper with the same superclass ()or interface as the wrapped object.
+ * Solution: A general design that you can apply to similar contexts, goals, and constraints. 
 
-Factory Method
---------------
-Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+Patterns fall into the following categories:
+
+ * Creational: decouple clients from the objects they need to instantiate.
+
+ * Structural: compose classes or objects into larger structures.
+
+ * Behavioral: control the way classes and objects interact and distribute responsibility.
+
+
+Creational patterns
+===================
 
 Abstract Factory
 ----------------
 Provide an interface for creating families of related dependent objects without specifying their concrete classes.
+
+Factory Method
+--------------
+Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
 
 Singleton
 ---------
@@ -83,32 +93,84 @@ Ensure that a class has only one instance and provide a global point of access t
 
 Simple idea, but issues include lazy vs eager instantiation, thread safety, multiple class loaders.
 
+
+Structural patterns
+===================
+
+Adapter
+-------
+Convert an object's interface into a different interface that the client expects.
+
+Composite
+---------
+Use tree structures to represent part/whole hierarchies, so clients can treat individual objects and compositions of objects uniformly.
+
+Decorator
+---------
+Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. A decorator is a wrapper with the same superclass ()or interface as the wrapped object.
+
+Facade
+------
+Provide a unified (higher level, easy-to-use) interface to a set of interfaces in a subsystem.
+
+Proxy
+-----
+Provide a surrogate or placeholder that implements the same interface as another object to control access to it:
+
+  * Remote object to make networking details less visible.
+
+  * Virtual access to a resource that is expensive or time consuming to create.
+
+  * Protected access to a controlled resource.
+
+These variations all intercept a method invocation, thereby providing a level of indirection.
+
+
+Behavioral patterns
+===================
+
 Command
 -------
 Encapsulate a request as an object, enabling you to parameterize other objects with different requests, queue or log requests, and support undoing operations.
 
 It decouples the requestor of an action from the object that performs the action.
 
+Iterator
+--------
+Provide a way to access the elements of an aggregate sequentially without exposing the aggregate's underlying representation. Place the task of traversal on the iterator, not on the aggregate.
+
 Null Object
 -----------
 Remove responsibility for handling nulls from clients by providing a surrogate that does nothing when executed.
 
-Adapter
--------
-Convert an object's interface into a different interface that the client expects.
+Observer
+-------- 
+Define a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and (either updated automatically or invited to pull updates). Observers and Subject are loosely coupled.
 
-Facade
-------
-Provide a unified (higher level, easy-to-use) interface to a set of interfaces in a subsystem.
+State
+-----
+Object (the context) behavior depends on its state (so it appears to change its class). Each state of the context is represented by a class, which implements a behavior for each of a set of possible inputs to the context.
+
+Strategy
+--------
+Define a family of algorithms; encapsulate each; make them interchangeable. This lets the algorithm vary independently from the client using it.
 
 Template Method
 ---------------
 Define the structure of an algorithm in a class method, and let subclasses provide implementations for some steps. The abstract class can contain a hook: a concrete method that does nothing (but can be overridden or ignored by subclasses). Rule: Use an abstract method when the subclass must provide an implementation. Use a hook when implementing the method in the subclass is optional.
 
-Iterator
---------
-Provide a way to access the elements of an aggregate sequentially without exposing the aggregate's underlying representation. Place the task of traversal on the iterator, not on the aggregate.
 
-Composite
----------
-Use tree structures to represent part/whole hierarchies, so clients can treat individual objects and compositions of objects uniformly.
+Superpattern
+============
+
+Model View Controller (MVC)
+---------------------------
+Given a situation where a user has access to a complex system, probably involving an underlying data collection, decouple the following aspects:
+
+ * View: what users see (data display and manipulatable controls).
+
+ * Controller: the logic of controlling the underlying system and the display.
+
+ * Model: maintenance, storage, and consistency of the underlying data and its relationships.
+
+ MVC combines the observer, strategy, and composite patterns. It uses the composite pattern -- perhaps built into a framework -- to enable the view to manage a hierarchy of display elements. The controller functions as a strategy for the view, so the same view can work with different models and controllers. The model implements the observer pattern to report its state while remaining independent of the view and controller. 
